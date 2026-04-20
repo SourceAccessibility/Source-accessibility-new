@@ -1,0 +1,10 @@
+/* Section layout styles for Source Accessibility site */
+main section {
+  padding: var(--section-padding);
+  background-color: var(--bg-body);
+}
+.bg-alt { background-color: var(--bg-alt) !important; }
+.bg-white { background-color: var(--white) !important; }
+section > article {
+  margin-bottom: 4rem;
+}

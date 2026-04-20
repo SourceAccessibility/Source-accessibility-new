@@ -1,0 +1,86 @@
+/* ===============================
+   HOME PAGE – FOUR THREADS
+================================ */
+
+/* Section container */
+.threads {
+  background-color: var(--bg-body);
+  position: relative;
+}
+
+/* Intro text */
+.threads-intro {
+  max-width: 40rem;
+  margin: 0 0 2.5rem;
+  color: var(--text-muted);
+}
+
+/* Grid */
+.threads-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  position: relative;
+}
+
+/* Each item */
+.threads-list li {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+/* ✨ STITCHED VERTICAL LINE (this is the key bit you lost) */
+.threads-list li::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 0.7rem;
+  border-left: 5px dashed var(--brand-primary);
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+/* Offset text from stitch */
+.threads-list h3,
+.threads-list p {
+  margin-left: 1.4rem;
+}
+
+/* Heading */
+.threads-list h3 {
+  font-size: 1.05rem;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+/* Body text */
+.threads-list p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ===============================
+   REMOVE DOUBLE STITCH LINE
+================================ */
+
+/* Kill the horizontal divider causing the issue */
+.thread-divider {
+  display: none;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {  .threads-list {
+    grid-template-columns: 1fr 1fr;
+  }}
+@media (max-width: 600px) {
+    .threads-list {
+      grid-template-columns: 1fr;
+    }
+  }

@@ -1,0 +1,31 @@
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.bg-accent-soft {
+  background: var(--accent-soft);
+  color: var(--accent-soft-text);
+}
+
+.bg-accent-soft h1,
+.bg-accent-soft h2,
+.bg-accent-soft h3,
+.bg-accent-soft p,
+.bg-accent-soft li {
+  color: var(--accent-soft-text);
+}
+
+.bg-alt { background-color: var(--bg-alt) !important; }
+.bg-white { background-color: var(--white) !important; }
+
+.section-separator {
+  height: 3px;
+  width: 100%;
+  background: var(--accent-soft);
+}
+
+.thread-divider {
+  border-top: 5px dashed var(--brand-primary);
+}

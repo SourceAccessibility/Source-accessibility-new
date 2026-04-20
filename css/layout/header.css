@@ -1,0 +1,32 @@
+.site-header {
+  background: var(--panel-surface);
+  color: var(--text-main);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0 0.5rem 0;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-logo {
+  height: 90px;
+  border-radius: 8px;
+}
+
+.site-name {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.site-tagline {
+  color: var(--hover-pink);
+}

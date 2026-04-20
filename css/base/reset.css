@@ -1,0 +1,17 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Verdana, sans-serif;
+  line-height: 1.7;
+  color: var(--text-main);
+  background: var(--bg-body);
+  font-size: 1.125rem;
+  padding-top: var(--header-height);
+}
+
+.page { width: 100%; }

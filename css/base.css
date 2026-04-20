@@ -1,0 +1,1112 @@
+/* css/base.css - Ultra-Accessible WCAG 2.2 AAA Design */
+
+:root {
+  /* Core Palette – dark but not harsh, easy to invert later */
+  --bg-body: #020617;        /* Deep navy */
+  --bg-alt: #0b1220;         /* Slightly lighter band */
+  --panel-surface: #0f172a;  /* Card / panel background */
+
+  /* Text – off-white, not pure white */
+  --text-main: #e5e7eb;      /* Soft light grey */
+  --text-muted: #cbd5f5;     /* Muted blue-grey for secondary text */
+
+  /* Brand blues – not hyper-bright */
+  --brand-primary: #60a5fa;  /* Medium blue for links / buttons */
+  --brand-focus: #a5b4fc;    /* Soft indigo focus outline */
+
+  --white: #ffffff;
+  --border-color: #1f2937;
+  --hover-pink: #b72659;      /* Slightly softer pink for contrast */
+  --hover-pink-text: #ffffff; /* Light text for hover contrast */
+
+  --container-width: 70rem;
+  --section-padding: 4rem 1.5rem;
+  --header-height: 0rem;
+ 
+  --accent-soft: #d6c1b1;      /* Muted clay */
+  --accent-soft-text: #1a1a1a; /* Dark text when used as a light background */
+}
+
+/* ---- 2. Base Typography & Reset ---- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  font-size: 100%; 
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Verdana, sans-serif;
+  line-height: 1.7; 
+  color: var(--text-main);
+  background: var(--bg-body);
+  font-size: 1.125rem; 
+  padding-top: var(--header-height);
+}
+
+/* The main wrapper just holds things together */
+.page { width: 100%; }
+
+/* ---- 3. Layout Utility Class ---- */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---- Accent background (for light sections) ---- */
+
+.bg-accent-soft {
+  background: var(--accent-soft);
+  color: var(--accent-soft-text);
+}
+
+/* Ensure text inside uses the dark accent text colour */
+.bg-accent-soft h1,
+.bg-accent-soft h2,
+.bg-accent-soft h3,
+.bg-accent-soft p,
+.bg-accent-soft li {
+  color: var(--accent-soft-text);
+}
+
+/* ---- Thin separator between sections ---- */
+
+.section-separator {
+  height: 3px;
+  width: 100%;
+  background: var(--accent-soft);
+  border: 0;
+  margin: 0;
+}
+/* Stitched divider used around the Four Threads section */
+.thread-divider {
+  width: 100%;
+  border: 0;
+  border-top: 5px dashed var(--brand-primary); /* same blue as threads */
+  opacity: 0.9;
+  margin: 0.25rem 0 1.5rem;  /* a little space above and below */
+}
+
+/* ---- 4. Global Links & Focus States ---- */
+a {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em; 
+  text-decoration-thickness: 2px;
+  font-weight: 600;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+a:hover {
+  color: var(--text-main);
+  background-color: var(--bg-alt);
+  text-decoration: underline;
+}
+
+/* Highly visible focus indicators for keyboard users */
+*:focus-visible {
+  outline: 3px solid var(--brand-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ---- 5. Typography ---- */
+h1, h2, h3 {
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 3rem; 
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-weight: 800;
+  font-size: 2.25rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: var(--brand-primary);
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Limit paragraph width for cognitive load */
+p, li {
+  max-width: 65ch;
+}
+
+
+/* ---- 6. Skip Link ---- */
+.skip-link {
+  position: absolute;
+  top: -10rem;
+  left: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--brand-primary);
+  color: var(--white) !important;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease-in-out; 
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--brand-focus);
+  outline-offset: -3px;
+}
+
+
+/* ---- Header & Nav ---- */
+
+/* Header background = same as service cards */
+.site-header {
+  /* Branding band background (nav bar has its own background). */
+  background: var(--bg-alt);
+  color: var(--text-main);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+
+.site-header .site-name {
+  color: var(--text-main);
+}
+
+.site-header .site-tagline {
+  color: var(--hover-pink);
+}
+
+/* Top band: logo + brand */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* keep everything left-aligned */
+  gap: 2rem;                  /* space between logo block and anything else */
+
+  /* NEW: drop header down slightly */
+  padding: 1rem 0 0.5rem 0;}
+
+/* Group logo + brand text so they line up nicely */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;   /* space between logo and text */
+}
+
+/* Logo */
+.header-logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 90px;
+  width: auto;
+  border-radius: 8px;
+}
+.brand-text {
+  margin-top: 0.25rem; /* tiny downward nudge */
+}
+
+/* Brand text */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-name {
+  margin: 0;
+  font-size: 2rem;          /* a bit bigger */
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.site-tagline {
+  margin: 0.3rem 0 0 0;
+  color: var(--hover-pink);
+  font-size: 0.95rem;
+}
+
+/* Blue nav bar below */
+.nav-bar {
+  background: var(--brand-primary);  /* blue bar */
+  color: var(--bg-body);
+}
+
+/* Navigation bar height balancing */
+.primary-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;        /* increase vertical padding */
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;    /* ensure text sits centrally */
+  justify-content: flex-start;
+}
+
+.primary-nav a {
+  color: var(--panel-surface);   /* very dark navy text */
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.primary-nav a:hover {
+  background: var(--hover-pink);
+  color: var(--hover-pink-text);
+}
+
+.primary-nav a:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 2px;
+  background: var(--hover-pink);
+  color: var(--hover-pink-text);
+}
+
+
+/* ---- Main Sections (Modern Band Layout) ---- */
+
+main section {
+  padding: var(--section-padding);
+  background-color: var(--bg-body);
+}
+
+.bg-alt { background-color: var(--bg-alt) !important; }
+.bg-white { background-color: var(--white) !important; }
+
+section > article {
+  margin-bottom: 4rem;
+}
+
+/* Details/Summary Styling (Accordion) */
+details {
+  margin-top: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background: var(--white);
+}
+summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--brand-primary);
+  padding: 0.8rem 0;
+  list-style-position: inside; 
+}
+summary:hover {
+  text-decoration: underline;
+}
+summary:focus-visible {
+  outline: 3px solid var(--brand-focus);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+details[open] summary {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+
+/* ---- Components ---- */
+
+/* Old services list (still safe to keep) */
+.services-list {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.services-list li { margin-bottom: 0; }
+
+.services-link {
+  display: block;
+  padding: 1.5rem;
+  background: var(--brand-primary);
+  color: var(--white);
+  border: 2px solid var(--brand-primary);
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-link:hover {
+  background: var(--white);
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  text-decoration: underline;
+}
+
+/* Video Container */
+.video-container {
+  margin-top: 2.5rem;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+video { width: 100%; display: block; }
+
+
+/* Button Link (CTA) */
+.button-link {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--hover-pink);
+  border: 2px solid var(--hover-pink);
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.button-link:hover {
+  background-color: var(--white);
+  border-color: var(--hover-pink);
+  color: var(--hover-pink);
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  padding: 4rem 0;
+  background-color: #1A1A1A;
+  color: #ffffff; 
+  font-size: 1rem;
+}
+
+.site-footer a {
+  color: var(--brand-focus);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.site-footer a:hover {
+  color: #ffffff;
+  background: none;
+}
+
+.footer-meta {
+  margin: 1.5rem 0;
+  color: #dddddd; 
+  line-height: 1.5;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.footer-nav a {
+  color: var(--brand-focus);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+}
+
+.footer-badges {
+  margin-top: 2rem;
+}
+
+.footer-badge {
+  max-height: 60px;
+  width: auto;
+}
+
+/* ---- Hero ---- */
+
+.hero {
+  padding: 3rem 1.5rem 3.25rem;
+  background: var(--bg-alt);
+}
+
+.hero .container {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hero-intro {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.hero-support {
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+/* ---- Four Threads (values) ---- */
+
+.threads {
+  /* main section padding & background already applied by: main section { … } */
+  background-color: var(--bg-body);
+  position: relative;
+}
+
+
+
+.threads-intro {
+  max-width: 40rem;
+  margin: 0 0 2.5rem;
+  color: var(--text-muted);
+}
+
+.threads-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  position: relative;
+}
+
+.threads-list li {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+/* vertical stitched thread left of each item */
+.threads-list li::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;                 /* how far the thread runs down */
+  left: 0.7rem;              /* nudged a little out from the text */
+  width: 0;                  /* we use border-left for thickness */
+  border-left: 5px dashed var(--brand-primary);  /* matches service accent blue */
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+/* offset text so it doesn’t sit on top of the stitch */
+.threads-list h3,
+.threads-list p {
+  margin-left: 1.4rem;
+}
+
+.threads-list h3 {
+  font-size: 1.05rem;
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.threads-list p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* responsive behaviour for Threads */
+@media (max-width: 900px) {
+  .threads-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .threads-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Pillars (4 cards) ---- */
+
+.pillars {
+  padding: var(--section-padding);
+  background: var(--bg-body);
+}
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.pillar-card {
+  background: var(--panel-surface);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  border: 1px solid var(--border-color);
+}
+
+.pillar-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.pillar-card p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* ---- Services cards (link to detailed pages) ---- */
+
+.services-section {
+  padding: var(--section-padding);
+  background: var(--bg-body);
+}
+
+.services-actions {
+  margin-top: 0.75rem;
+}
+
+.services-grid {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  display: block;
+  background: var(--panel-surface);
+  border-radius: 1rem;
+  padding: 1.4rem;
+  border: 2px dashed var(--accent-soft);
+  text-decoration: none;
+  color: var(--text-main);
+  height: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.service-cta::after {
+  content: "→";
+  font-size: 0.95rem;
+}
+
+.service-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.service-card:hover {
+  border-color: var(--brand-primary);
+  background: var(--hover-pink);
+  text-decoration: none;
+  color: var(--hover-pink-text);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.22);
+}
+
+.service-card:hover .service-cta {
+  color: var(--hover-pink-text);
+}
+
+.service-card:focus-visible {
+  outline: 3px solid var(--brand-focus);
+  outline-offset: 4px;
+}
+
+/* ---- How we work (steps) ---- */
+
+.how-we-work {
+  padding: var(--section-padding);
+  background: var(--bg-alt);
+}
+
+.section-intro {
+  max-width: 55ch;
+  color: var(--text-muted);
+}
+
+.steps-wrapper {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.steps-thread {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.steps-thread polyline {
+  fill: none;
+  stroke: var(--brand-primary);
+  stroke-width: 5;
+  stroke-dasharray: 12 10;
+  opacity: 0.9;
+}
+.steps-thread line {
+  stroke: var(--brand-primary);
+  stroke-width: 5;
+  stroke-dasharray: 12 10;
+  opacity: 0.9;
+}
+
+.steps-link {
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--hover-pink);
+  color: var(--white);
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 3;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.steps-link:hover {
+  background: var(--white);
+  color: var(--hover-pink);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+.steps-thread line {
+  stroke: var(--brand-primary);
+  stroke-width: 5;
+  stroke-dasharray: 12 10;
+  opacity: 0.9;
+}
+
+.steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+}
+
+.steps-pyramid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  gap: 1.25rem 1.25rem;
+  justify-items: center;
+  position: relative;
+}
+
+.steps-pyramid li {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.steps-pyramid .step-1 { grid-column: 2; grid-row: 1; }
+.steps-pyramid .step-2 { grid-column: 1; grid-row: 2; }
+.steps-pyramid .step-3 { grid-column: 3; grid-row: 2; }
+
+.step-circle {
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: var(--hover-pink);
+  color: #0a1a3c;                       /* navy text */
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2.25rem;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  position: relative;
+  z-index: 1; /* lift circles above the thread */
+}
+
+.step-number {
+  display: none;
+}
+
+.step-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+}
+
+.step-heading {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--accent-soft-text);
+  border-radius: 0.9rem;
+  padding: 0.6rem 0.85rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  width: 78%;
+  max-width: 78%;
+}
+
+.step-heading h3 {
+  margin: 0;
+  color: #0a1a3c;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.step-body {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--accent-soft-text);
+  border-radius: 0.9rem;
+  padding: 0.6rem 0.85rem 0.75rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  width: 78%;
+  max-width: 78%;
+}
+
+.step-body p {
+  margin: 0;
+  color: #0a1a3c;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.steps-pyramid .step-1::before,
+.steps-pyramid .step-1::after {
+  display: none;
+}
+
+/* ---- Trusted / testimonials ---- */
+
+.trusted-by {
+  padding: var(--section-padding);
+  background: var(--bg-body);
+}
+
+/* Row of testimonial cards – stack cards vertically but keep each card laid out horizontally */
+.testimonial-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Base card styling */
+.testimonial-card {
+  background: var(--panel-surface);
+  border-radius: 1rem;
+  border: 2px dashed var(--accent-soft);
+}
+
+/* Horizontal layout: quote left, logo + name right */
+.testimonial-card.horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+/* left column (quote) */
+.testimonial-left {
+  flex: 2;
+}
+
+/* right column (logo + meta) */
+.testimonial-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0.5rem;
+}
+
+/* logos */
+.testimonial-logo {
+  max-width: 120px;
+  height: auto;
+}
+
+.testimonial-logo.soft-bg {
+  background: var(--text-main);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.testimonial-logo.tall-logo {
+  max-width: 150px;  /* slightly bigger for Skyscanner & St Andrews */
+}
+
+/* quote text */
+.testimonial-quote {
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* name + role */
+.testimonial-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.testimonial-role {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ---- Real-world impact ---- */
+
+.impact {
+  padding: var(--section-padding);
+  background: var(--bg-alt);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.impact-card {
+  background: var(--panel-surface);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  border: 1px solid var(--border-color);
+}
+
+.impact-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.impact-card p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* ---- Trust (data, security, sustainability) ---- */
+
+.trust {
+  padding: var(--section-padding);
+  background: var(--bg-body);
+}
+
+.trust ul {
+  padding-left: 1.25rem;
+}
+
+/* ---- Contact ---- */
+
+.contact {
+  padding: var(--section-padding);
+  background: var(--bg-alt);
+}
+
+.contact-details {
+  margin-top: 1rem;
+}
+
+.contact-details p {
+  margin: 0.5rem 0;
+}
+
+/* ---- Mobile Tweaks ---- */
+@media (max-width: 768px) {
+  /* Reduce font sizes slightly for small screens */
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.75rem; }
+  
+  .site-tagline { display: none; }
+
+  /* Header on mobile */
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  :root {
+    --header-height: 0rem;
+  }
+
+  .primary-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .primary-nav a {
+    padding: 0.6rem 0;
+  }
+
+  .services-link:hover {
+    background: none;
+    color: var(--text-main);
+  }
+
+  .steps-pyramid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .steps-pyramid .step-1,
+  .steps-pyramid .step-2,
+  .steps-pyramid .step-3 {
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .steps-pyramid .step-1::before,
+  .steps-pyramid .step-1::after {
+    display: none;
+  }
+
+    /* Testimonials: stack neatly on mobile */
+  .testimonial-card.horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .testimonial-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Nav bar for .main-nav and .nav-list (header.html structure) */
+.main-nav {
+  background: var(--brand-primary);
+  color: var(--bg-body);
+  padding: 0;
+  margin: 0;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+  align-items: center;
+  justify-content: flex-start;
+}
+.nav-list > li {
+  position: relative;
+}
+.nav-list a,
+.dropdown-toggle {
+  color: var(--panel-surface);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.nav-list a:hover,
+.nav-list a:focus-visible,
+.dropdown-toggle:hover,
+.dropdown-toggle:focus-visible {
+  background: var(--hover-pink);
+  color: var(--hover-pink-text);
+  outline: 3px solid var(--white);
+  outline-offset: 2px;
+}
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: var(--panel-surface);
+  border: 1px solid var(--brand-primary);
+  border-radius: 0 0 8px 8px;
+  min-width: 220px;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  padding: 0.5em 0;
+}
+.dropdown-menu[hidden] {
+  display: none !important;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 0.75em 1.5em;
+  color: var(--text-main);
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.dropdown-menu a:focus,
+.dropdown-menu a:hover {
+  background: var(--brand-primary);
+  color: var(--white);
+  outline: 2px solid var(--brand-focus);
+}
+@media (max-width: 900px) {
+  .nav-list {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .dropdown-menu {
+    min-width: 160px;
+  }
+}

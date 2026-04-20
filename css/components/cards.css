@@ -1,0 +1,6 @@
+.pillar-card,
+.impact-card {
+  background: var(--panel-surface);
+  border-radius: 1rem;
+  padding: 1.75rem;
+}

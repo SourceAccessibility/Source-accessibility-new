@@ -1,0 +1,85 @@
+.testimonial-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Base card */
+.testimonial-card {
+  background: var(--panel-surface);
+  border-radius: 1rem;
+  border: 2px dashed var(--accent-soft);
+}
+
+/* Horizontal layout */
+.testimonial-card.horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+/* Left (quote) */
+.testimonial-left {
+  flex: 2;
+}
+
+/* Right (logo + meta) */
+.testimonial-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0.5rem;
+}
+
+/* Logos */
+.testimonial-logo {
+  max-width: 120px;
+  height: auto;
+}
+
+.testimonial-logo.soft-bg {
+  background: var(--text-main);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.testimonial-logo.tall-logo {
+  max-width: 150px;
+}
+
+/* Quote */
+.testimonial-quote {
+  margin: 0;
+  color: var(--text-main);
+}
+
+/* Name + role */
+.testimonial-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.testimonial-role {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ---- Mobile adjustments ---- */
+@media (max-width: 768px) {
+
+  .testimonial-card.horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .testimonial-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

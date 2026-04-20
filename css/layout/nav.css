@@ -1,0 +1,21 @@
+.main-nav {
+  background: var(--brand-primary);
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  padding: 1rem 0;
+}
+
+.nav-list a {
+  color: var(--panel-surface);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  background: var(--hover-pink);
+  color: var(--hover-pink-text);
+}

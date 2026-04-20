@@ -1,0 +1,6 @@
+.button-link {
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  color: var(--white);
+  background-color: var(--hover-pink);
+}

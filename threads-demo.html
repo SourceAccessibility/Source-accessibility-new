@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>Four Threads Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617; /* dark navy like your site */
+      color: #e5e7eb;
+    }
+
+    .page {
+      max-width: 70rem;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 4rem;
+    }
+
+   .threads {
+  background: #020617;
+  padding: 3rem 1rem 2.5rem;
+  position: relative; /* so we can absolutely position the knot */
+}
+
+    .threads h2 {
+      font-size: 2rem;
+      margin: 0 0 0.5rem;
+      color: #e5e7eb;
+    }
+
+    .threads-intro {
+      max-width: 40rem;
+      margin: 0 0 2.5rem;
+      color: #9ca3af;
+    }
+
+    .threads-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      position: relative;
+    }
+
+
+    .threads-list li {
+      position: relative;
+      padding-top: 1.5rem;
+    }
+
+
+ /* vertical stitched thread behind each item */
+.threads-list li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0rem;     
+  left: 0.7rem;        /* nudged a little out from the text */
+  width: 0;            /* we use border-left for thickness */
+  border-left: 5px dashed #3b81f6;  /* THICK + DASHED = stitch */
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+/* stitched divider line below the Threads section */
+.thread-divider {
+  width: 100%;
+  border: 0;
+  border-top: 5px dashed #3b81f6; /* your stitch colour */
+  opacity: 0.9;
+  margin: 1rem 0; /* space above only */
+}
+
+    .threads-list h3,
+    .threads-list p {
+      margin-left: 1.4rem;
+    }
+
+    .threads-list h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      color: #e5e7eb;
+    }
+
+    .threads-list p {
+      font-size: 0.95rem;
+      color: #9ca3af;
+    }
+
+    /* central knot where threads tie together */
+.threads-knot {
+  position: absolute;
+  left: 50%;
+  bottom: 1.3rem;
+  transform: translateX(-50%);
+  width: 3.2rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  border: 5px solid #3b81f6;
+  background: #020617;
+  box-shadow: 0 0 0 3px #020617; /* subtle outline so it feels inset */
+}
+
+/* a hint of plaiting inside the knot */
+.threads-knot::before,
+.threads-knot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  border-top: 4px dashed #facc15;
+  border-bottom: 4px dashed transparent;
+}
+
+.threads-knot::before {
+  transform: skewX(-18deg);
+}
+
+.threads-knot::after {
+  transform: skewX(18deg);
+}
+
+    /* responsive behaviour */
+    @media (max-width: 900px) {
+      .threads-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .threads-list {
+        grid-template-columns: 1fr;
+      }
+      .threads-list::after {
+        display: none; /* optional on very small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+<hr class="thread-divider">
+    <section class="threads" aria-labelledby="threads-heading">
+      <h2 id="threads-heading">Four threads that run through our work</h2>\
+      <p class="threads-intro">
+        However you work with Source Accessibility, these four threads are always woven in.
+      </p>
+
+      <ol class="threads-list">
+        <li>
+          <h3>Inclusive research</h3>
+          <p>We start with differently disabled people using real assistive technology, not generic checklists.</p>
+        </li>
+        <li>
+          <h3>Practical strategy</h3>
+          <p>Roadmaps that fit your release cycles, budgets, and long-term responsibilities.</p>
+        </li>
+        <li>
+          <h3>Skills &amp; mentoring</h3>
+          <p>Hands-on demos and 1:1 support to build confidence across product, design and engineering.</p>
+        </li>
+        <li>
+          <h3>Ongoing partnership</h3>
+          <p>Light-touch follow-ups that keep accessibility on track as your product and teams evolve.</p>
+        </li>
+      </ol>
+    </section>
+<hr class="thread-divider">
+  </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.site-footer {
+  padding: 4rem 0;
+  background-color: #1A1A1A;
+  color: #ffffff;
+}
+
+.footer-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
