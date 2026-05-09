@@ -123,8 +123,9 @@ h1, h2, h3 {
 
 h1 {
   font-weight: 900;
-  font-size: 3rem; 
+  font-size: 3.5rem; 
   letter-spacing: -0.02em;
+  margin-top: 0;
   margin-bottom: 1.5rem;
 }
 
@@ -175,29 +176,46 @@ p, li {
 
 /* Header background = same as service cards */
 .site-header {
-  /* Branding band background (nav bar has its own background). */
-  background: var(--bg-alt);
+  /* Branding band + nav each set their own backgrounds. */
+  background: transparent;
   color: var(--text-main);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
-}
-
-.site-header .site-name {
-  color: var(--text-main);
-}
-
-.site-header .site-tagline {
-  color: var(--hover-pink);
+  box-shadow: none;
 }
 
 /* Top band: logo + brand */
 .header-top {
   display: flex;
   align-items: center;
-  justify-content: flex-start;  /* keep everything left-aligned */
-  gap: 2rem;                  /* space between logo block and anything else */
+  justify-content: flex-start;
+  gap: 1.25rem;                  /* space between branding and nav */
 
-  /* NEW: drop header down slightly */
-  padding: 1rem 0 0.5rem 0;}
+  /* Full-bleed branding background (separate from the blue nav band). */
+  position: relative;
+  isolation: isolate;
+  padding: 1.75rem 0 1.25rem 0;
+}
+
+.header-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  /* Match the navy used for service cards. */
+  background: var(--panel-surface);
+  z-index: -1;
+}
+
+.site-header .site-name {
+  /* Match H1 colour. */
+  color: var(--text-main);
+}
+
+.site-header .site-tagline {
+  /* Soft indigo accent (the "purple" vibe). */
+  color: var(--brand-focus);
+}
 
 /* Group logo + brand text so they line up nicely */
 .header-brand {
@@ -243,8 +261,8 @@ p, li {
 
 /* Blue nav bar below */
 .nav-bar {
-  background: var(--brand-primary);  /* blue bar */
-  color: var(--bg-body);
+  background: var(--panel-surface);  /* match service cards */
+  color: var(--text-main);
 }
 
 /* Navigation bar height balancing */
@@ -259,9 +277,10 @@ p, li {
 }
 
 .primary-nav a {
-  color: var(--panel-surface);   /* very dark navy text */
+  color: var(--text-main);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.2;
   text-decoration: none;
   padding: 0.3rem 0.75rem;
   border-radius: 6px;
@@ -963,7 +982,7 @@ video { width: 100%; display: block; }
 /* ---- Mobile Tweaks ---- */
 @media (max-width: 768px) {
   /* Reduce font sizes slightly for small screens */
-  h1 { font-size: 2.25rem; }
+  h1 { font-size: 2.5rem; }
   h2 { font-size: 1.75rem; }
   
   .site-tagline { display: none; }
@@ -973,6 +992,10 @@ video { width: 100%; display: block; }
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
+  }
+
+  .main-nav {
+    margin-left: 0;
   }
   
   :root {
@@ -1026,18 +1049,20 @@ video { width: 100%; display: block; }
 
 /* Nav bar for .main-nav and .nav-list (header.html structure) */
 .main-nav {
-  background: var(--brand-primary);
-  color: var(--bg-body);
+  background: transparent;
+  color: var(--text-main);
   padding: 0;
   margin: 0;
+  box-shadow: none;
+  margin-left: 1.75rem; /* slightly further from branding */
 }
 .nav-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.65rem;
   list-style: none;
   margin: 0;
-  padding: 1rem 0;
+  padding: 0;
   align-items: center;
   justify-content: flex-start;
 }
@@ -1046,15 +1071,15 @@ video { width: 100%; display: block; }
 }
 .nav-list a,
 .dropdown-toggle {
-  color: var(--panel-surface);
+  color: var(--brand-primary);
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
-  padding: 0.45rem 0.8rem;
-  border-radius: 6px;
-  background: none;
-  border: none;
-  transition: background-color 0.2s, color 0.2s;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px; /* pill */
+  background: transparent;
+  border: 2px solid var(--brand-primary);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
 }
 .nav-list a:hover,
@@ -1105,7 +1130,27 @@ video { width: 100%; display: block; }
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
-  }
+    justify-content: flex-start;
+.service-card:hover,
+.service-card:focus,
+.service-card:focus-visible {
+  border-color: var(--brand-primary);
+  background: var(--hover-pink);
+  text-decoration: none;
+  color: var(--hover-pink-text);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.22);
+}
+
+.service-card:hover .service-cta,
+.service-card:focus .service-cta,
+.service-card:focus-visible .service-cta {
+  color: var(--hover-pink-text);
+}
+
+.service-card:focus-visible {
+  outline: 3px solid var(--brand-focus);
+  outline-offset: 4px;
+}  }
   .dropdown-menu {
     min-width: 160px;
   }
